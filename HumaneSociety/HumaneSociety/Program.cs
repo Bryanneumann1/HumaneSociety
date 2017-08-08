@@ -10,6 +10,9 @@ namespace HumaneSociety
     {
         static void Main(string[] args)
         {
+            Query query = new Query();
+            query.Run();
+            Console.ReadKey();
         }
     }
 }

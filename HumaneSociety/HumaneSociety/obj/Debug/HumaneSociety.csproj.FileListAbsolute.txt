@@ -1,0 +1,6 @@
+C:\Users\Home\Desktop\Projects\HumaneSociety\HumaneSociety\HumaneSociety\bin\Debug\HumaneSociety.exe.config
+C:\Users\Home\Desktop\Projects\HumaneSociety\HumaneSociety\HumaneSociety\bin\Debug\HumaneSociety.exe
+C:\Users\Home\Desktop\Projects\HumaneSociety\HumaneSociety\HumaneSociety\bin\Debug\HumaneSociety.pdb
+C:\Users\Home\Desktop\Projects\HumaneSociety\HumaneSociety\HumaneSociety\obj\Debug\HumaneSociety.csprojResolveAssemblyReference.cache
+C:\Users\Home\Desktop\Projects\HumaneSociety\HumaneSociety\HumaneSociety\obj\Debug\HumaneSociety.exe
+C:\Users\Home\Desktop\Projects\HumaneSociety\HumaneSociety\HumaneSociety\obj\Debug\HumaneSociety.pdb

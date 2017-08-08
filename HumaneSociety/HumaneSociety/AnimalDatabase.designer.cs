@@ -80,47 +80,95 @@ namespace HumaneSociety
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
+		private int _Id;
+		
+		private System.Nullable<int> _Room;
+		
 		private string _Animal_Type;
 		
 		private string _Gender;
 		
 		private string _Name;
 		
-		private int _Room_;
-		
 		private string _Adoption_Status;
 		
-		private System.Nullable<decimal> _Age;
+		private string _Age;
 		
 		private string _Shots;
 		
 		private string _Food;
 		
+		private string _Breed;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnRoomChanging(System.Nullable<int> value);
+    partial void OnRoomChanged();
     partial void OnAnimal_TypeChanging(string value);
     partial void OnAnimal_TypeChanged();
     partial void OnGenderChanging(string value);
     partial void OnGenderChanged();
     partial void OnNameChanging(string value);
     partial void OnNameChanged();
-    partial void OnRoom_Changing(int value);
-    partial void OnRoom_Changed();
     partial void OnAdoption_StatusChanging(string value);
     partial void OnAdoption_StatusChanged();
-    partial void OnAgeChanging(System.Nullable<decimal> value);
+    partial void OnAgeChanging(string value);
     partial void OnAgeChanged();
     partial void OnShotsChanging(string value);
     partial void OnShotsChanged();
     partial void OnFoodChanging(string value);
     partial void OnFoodChanged();
+    partial void OnBreedChanging(string value);
+    partial void OnBreedChanged();
     #endregion
 		
 		public Animal()
 		{
 			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Room", DbType="Int")]
+		public System.Nullable<int> Room
+		{
+			get
+			{
+				return this._Room;
+			}
+			set
+			{
+				if ((this._Room != value))
+				{
+					this.OnRoomChanging(value);
+					this.SendPropertyChanging();
+					this._Room = value;
+					this.SendPropertyChanged("Room");
+					this.OnRoomChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Animal_Type", DbType="VarChar(50)")]
@@ -183,26 +231,6 @@ namespace HumaneSociety
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="Room#", Storage="_Room_", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Room_
-		{
-			get
-			{
-				return this._Room_;
-			}
-			set
-			{
-				if ((this._Room_ != value))
-				{
-					this.OnRoom_Changing(value);
-					this.SendPropertyChanging();
-					this._Room_ = value;
-					this.SendPropertyChanged("Room_");
-					this.OnRoom_Changed();
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adoption_Status", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
 		public string Adoption_Status
 		{
@@ -223,8 +251,8 @@ namespace HumaneSociety
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Age", DbType="Decimal(18,0)")]
-		public System.Nullable<decimal> Age
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Age", DbType="VarChar(50)")]
+		public string Age
 		{
 			get
 			{
@@ -279,6 +307,26 @@ namespace HumaneSociety
 					this._Food = value;
 					this.SendPropertyChanged("Food");
 					this.OnFoodChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Breed", DbType="VarChar(50)")]
+		public string Breed
+		{
+			get
+			{
+				return this._Breed;
+			}
+			set
+			{
+				if ((this._Breed != value))
+				{
+					this.OnBreedChanging(value);
+					this.SendPropertyChanging();
+					this._Breed = value;
+					this.SendPropertyChanged("Breed");
+					this.OnBreedChanged();
 				}
 			}
 		}
