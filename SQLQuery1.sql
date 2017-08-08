@@ -1,3 +1,6 @@
-UPDATE Animals
-SET Breed = 'Rottweiler'
-WHERE Id = 1;
+create table Room_Number
+(
+Id int not null,
+RoomNumber int NOT NULL,
+PRIMARY KEY (Id)
+);
