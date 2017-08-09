@@ -74,13 +74,14 @@ namespace HumaneSociety
             string nameinput;
             int idinput;
             Console.WriteLine("Please enter the animals Id number that you would like to update");
-            idinput = Convert.ToInt32(Console.ReadLine()); 
+            idinput = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("Please enter the animals name that you would like to Update");
             nameinput = Console.ReadLine();
 
             var animals = database.Animals.Where(x => x.Name == nameinput && x.Id == idinput);
 
             foreach (var x in animals)
+            {
                 if (x.Id != idinput || x.Name != nameinput)
                     Console.WriteLine("That animal doesnt exist");
                 else
@@ -90,6 +91,30 @@ namespace HumaneSociety
 
                     Console.WriteLine("Updated");
                 }
+            }
+        }
+        public void UpdateShotStatus()
+        {
+            int idinput;
+            Console.WriteLine("Please enter the Id number of the animal that you are administering shots to");
+            idinput = Convert.ToInt32(Console.ReadLine());
+
+            var animals = database.Animals.Where(x => x.Id == idinput);
+                    
+            foreach (var x in animals)
+            {
+                if (x.Id != idinput || x.Shots != "no")
+                    Console.WriteLine("Please enter an animal that needs its shots updated");
+                
+                else
+                {
+                    x.Shots = "Yes";
+                    database.SubmitChanges();
+
+                    Console.WriteLine("Updated");
+                }
+                UpdateShotStatus();
+            }
         }
     }
 }

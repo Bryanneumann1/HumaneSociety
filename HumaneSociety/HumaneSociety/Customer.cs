@@ -29,5 +29,6 @@ namespace HumaneSociety
             database.Customers.InsertOnSubmit(customer);
             database.SubmitChanges();
         }
+
     }
 }
