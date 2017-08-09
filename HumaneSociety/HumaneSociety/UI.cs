@@ -15,6 +15,8 @@ namespace HumaneSociety
             Console.WriteLine("Here you will be able to enter new animals and customers.");
             Console.WriteLine("Enter 1 to Add a new animal to the database");
             Console.WriteLine("Enter 2 to Add a new customer to the database");
+            Console.WriteLine("Enter 3 to Update an animals Adoption Status");
+            Console.WriteLine("Enter EXIT to leave this application");
             string choice = Console.ReadLine().ToLower();
 
             switch (choice)
@@ -24,6 +26,12 @@ namespace HumaneSociety
                     break;
                 case "2":
                     customer.AddCustomer();
+                    break;
+                case "3":
+                    animal.UpdateAdoptionStatus();
+                    break;
+                case "exit":
+                    Environment.Exit(0);
                     break;
                 default:
                     Run();

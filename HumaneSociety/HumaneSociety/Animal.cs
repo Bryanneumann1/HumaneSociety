@@ -14,7 +14,7 @@ namespace HumaneSociety
         {
             
             AddAnimal();
-            AddToDatabase();
+           
             //var animals =
             //    from x in database.Animals
             //    select x;
@@ -34,6 +34,7 @@ namespace HumaneSociety
         }
         public void AddAnimal()
         {
+            
             Animal newAnimal = new Animal();
             Room_Number newroomnumber = new Room_Number();
             Console.WriteLine("You will need to enter infomation about the animal you are submiting");
@@ -58,20 +59,35 @@ namespace HumaneSociety
             Console.WriteLine("Up to date on shots?: ");
             newAnimal.Shots = Console.ReadLine();
 
-            //Console.WriteLine("Room #: ");
-            //newroomnumber.RoomNumber = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Room #: ");
+            newroomnumber.RoomNumber = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Adoption status: ");
-            newAnimal.Adoption_Status = Console.ReadLine();
+           // Console.WriteLine("Adoption status: ");
+           // newAnimal.Adoption_Status = Console.ReadLine();
 
             database.Animals.InsertOnSubmit(newAnimal);
             database.SubmitChanges();
 
         }
-
-        public void AddToDatabase()
+        public void UpdateAdoptionStatus()
         {
+            string nameinput;
+            int idinput;
+            Console.WriteLine("Please enter the animals Id number that you would like to update");
+            idinput = Convert.ToInt32(Console.ReadLine()); 
+            Console.WriteLine("Please enter the animals name that you would like to Update");
+            nameinput = Console.ReadLine();
 
+            var animals = database.Animals.Where(x => x.Name == nameinput && x.Id == idinput);
+
+            foreach (var x in animals)
+                x.Adoption_Status = "Adopted";
+            database.SubmitChanges();
+
+            Console.WriteLine("Updated");
+
+            database.SubmitChanges();
         }
+
     }
 }
