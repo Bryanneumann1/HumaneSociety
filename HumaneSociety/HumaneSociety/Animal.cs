@@ -62,8 +62,8 @@ namespace HumaneSociety
             Console.WriteLine("Room #: ");
             newroomnumber.RoomNumber = Convert.ToInt32(Console.ReadLine());
 
-           // Console.WriteLine("Adoption status: ");
-           // newAnimal.Adoption_Status = Console.ReadLine();
+            Console.WriteLine("Adoption status: ");
+            newAnimal.Adoption_Status = Console.ReadLine();
 
             database.Animals.InsertOnSubmit(newAnimal);
             database.SubmitChanges();
@@ -81,13 +81,15 @@ namespace HumaneSociety
             var animals = database.Animals.Where(x => x.Name == nameinput && x.Id == idinput);
 
             foreach (var x in animals)
-                x.Adoption_Status = "Adopted";
-            database.SubmitChanges();
+                if (x.Id != idinput || x.Name != nameinput)
+                    Console.WriteLine("That animal doesnt exist");
+                else
+                {
+                    x.Adoption_Status = "Adopted";
+                    database.SubmitChanges();
 
-            Console.WriteLine("Updated");
-
-            database.SubmitChanges();
+                    Console.WriteLine("Updated");
+                }
         }
-
     }
 }
