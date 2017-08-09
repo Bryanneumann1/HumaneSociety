@@ -100,12 +100,12 @@ namespace HumaneSociety
             idinput = Convert.ToInt32(Console.ReadLine());
 
             var animals = database.Animals.Where(x => x.Id == idinput);
-                    
+
             foreach (var x in animals)
             {
                 if (x.Id != idinput || x.Shots != "no")
                     Console.WriteLine("Please enter an animal that needs its shots updated");
-                
+
                 else
                 {
                     x.Shots = "Yes";
@@ -113,7 +113,29 @@ namespace HumaneSociety
 
                     Console.WriteLine("Updated");
                 }
-                UpdateShotStatus();
+            }
+        }
+        public void UpdateFoodStatus()
+        {
+            string food;
+            int idinput;
+            Console.WriteLine("Please enter the Id for the animals Food status you would like to update");
+            idinput = Convert.ToInt32(Console.ReadLine());
+
+            var animals = database.Animals.Where(x => x.Id == idinput);
+
+            foreach ( var x in animals)
+            {
+                if(x.Id != idinput)
+                    Console.WriteLine("That animal doesn't exist");
+                else
+                {
+                    Console.WriteLine("What is the animals new weekly food consumtion?");
+                    food = Console.ReadLine();
+                    x.Food = food;
+                    database.SubmitChanges();
+                    Console.WriteLine("Updated");
+                }
             }
         }
     }
