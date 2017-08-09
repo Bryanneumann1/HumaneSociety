@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace HumaneSociety
 {
-    class Query
+    partial class Animal
     {
         AnimalDatabaseDataContext database = new AnimalDatabaseDataContext();
-        Animal newAnimal = new Animal();
+        
         public void Run()
         {
             
@@ -34,6 +34,8 @@ namespace HumaneSociety
         }
         public void AddAnimal()
         {
+            Animal newAnimal = new Animal();
+            Room_Number newroomnumber = new Room_Number();
             Console.WriteLine("You will need to enter infomation about the animal you are submiting");
             Console.WriteLine("Animal Type: ");
             newAnimal.Animal_Type = Console.ReadLine();
@@ -56,17 +58,20 @@ namespace HumaneSociety
             Console.WriteLine("Up to date on shots?: ");
             newAnimal.Shots = Console.ReadLine();
 
-            Console.WriteLine("Room #: ");
-            newAnimal.Room = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Room #: ");
+            //newroomnumber.RoomNumber = Convert.ToInt32(Console.ReadLine());
 
             Console.WriteLine("Adoption status: ");
             newAnimal.Adoption_Status = Console.ReadLine();
+
+            database.Animals.InsertOnSubmit(newAnimal);
+            database.SubmitChanges();
+
         }
 
         public void AddToDatabase()
         {
-            database.Animals.InsertOnSubmit(newAnimal);
-            database.SubmitChanges();
+
         }
     }
 }

@@ -10,9 +10,12 @@ namespace HumaneSociety
     {
         static void Main(string[] args)
         {
-            Query query = new Query();
-            query.Run();
-            Console.ReadKey();
+            while (true)
+            {
+                UI ui = new UI();
+                ui.Run();
+                Console.ReadKey();
+            }
         }
     }
 }

@@ -1,3 +1,5 @@
-ALTER TABLE Animals
-ADD RoomId int
-Foreign Key (RoomId) References Room_Number(Id);
+ALTER TABLE Customer
+ADD Address_ varchar(20)not null
+
+
+
