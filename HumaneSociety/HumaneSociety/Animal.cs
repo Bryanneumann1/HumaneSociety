@@ -9,12 +9,12 @@ namespace HumaneSociety
     partial class Animal
     {
         AnimalDatabaseDataContext database = new AnimalDatabaseDataContext();
-        
+
         public void Run()
         {
-            
+
             AddAnimal();
-           
+
             //var animals =
             //    from x in database.Animals
             //    select x;
@@ -34,7 +34,7 @@ namespace HumaneSociety
         }
         public void AddAnimal()
         {
-            
+
             Animal newAnimal = new Animal();
             Room_Number newroomnumber = new Room_Number();
             Console.WriteLine("You will need to enter infomation about the animal you are submiting");
@@ -123,9 +123,9 @@ namespace HumaneSociety
 
             var animals = database.Animals.Where(x => x.Id == idinput);
 
-            foreach ( var x in animals)
+            foreach (var x in animals)
             {
-                if(x.Id != idinput)
+                if (x.Id != idinput)
                     Console.WriteLine("That animal doesn't exist");
                 else
                 {
@@ -141,30 +141,107 @@ namespace HumaneSociety
         {
             var animals = database.Animals.Where(x => x.Shots == "no");
 
-            foreach(var x in animals)
-                Console.WriteLine(x.Id.ToString(), x.Name);
+            foreach (var x in animals)
+            {
+                Console.WriteLine("Id: " + x.Id.ToString());
+                Console.WriteLine("Gender: " + x.Gender);
+                Console.WriteLine("Name: " + x.Name);
+                Console.WriteLine("Breed: " + x.Breed);
+                Console.WriteLine("Age: " + x.Age);
+                Console.WriteLine("Adoption status: " + x.Adoption_Status);
+                Console.WriteLine("Up to date on shots: " + x.Shots);
+                Console.WriteLine("Weekly diet: " + x.Food);
+                Console.WriteLine(" ");
+            }
+                
         }
         public void SearchAnimalsWithShots()
         {
             var animals = database.Animals.Where(x => x.Shots == "yes");
 
-            foreach(var x in animals)
-                Console.WriteLine(x.Id.ToString(), x.Name);
+            foreach (var x in animals)
+            {
+                Console.WriteLine("Id: " + x.Id.ToString());
+                Console.WriteLine("Gender: " + x.Gender);
+                Console.WriteLine("Name: " + x.Name);
+                Console.WriteLine("Breed: " + x.Breed);
+                Console.WriteLine("Age: " + x.Age);
+                Console.WriteLine("Adoption status: " + x.Adoption_Status);
+                Console.WriteLine("Up to date on shots: " + x.Shots);
+                Console.WriteLine("Weekly diet: " + x.Food);
+                Console.WriteLine(" ");
+            }
+                
         }
         public void SearchAnimalsAdopted()
         {
             var animals = database.Animals.Where(x => x.Adoption_Status == "adopted");
 
             foreach (var x in animals)
-                Console.WriteLine(x.Id.ToString(), x.Name);
+            {
+                Console.WriteLine("Id: " + x.Id.ToString());
+                Console.WriteLine("Gender: " + x.Gender);
+                Console.WriteLine("Name: " + x.Name);
+                Console.WriteLine("Breed: " + x.Breed);
+                Console.WriteLine("Age: " + x.Age);
+                Console.WriteLine("Adoption status: " + x.Adoption_Status);
+                Console.WriteLine("Up to date on shots: " + x.Shots);
+                Console.WriteLine("Weekly diet: " + x.Food);
+                Console.WriteLine(" ");
+            }
+                
         }
         public void SearchAnimalsAvailble()
         {
             var animals = database.Animals.Where(x => x.Adoption_Status == "available");
 
             foreach (var x in animals)
-                Console.WriteLine(x.Id.ToString(), x.Name);
+            {
+                Console.WriteLine("Id: " + x.Id.ToString());
+                Console.WriteLine("Gender: " + x.Gender);
+                Console.WriteLine("Name: " + x.Name);
+                Console.WriteLine("Breed: " + x.Breed);
+                Console.WriteLine("Age: " + x.Age);
+                Console.WriteLine("Adoption status: " + x.Adoption_Status);
+                Console.WriteLine("Up to date on shots: " + x.Shots);
+                Console.WriteLine("Weekly diet: " + x.Food);
+                Console.WriteLine(" ");
+            }
+               
         }
-        
+        public void SearchByMaleGender()
+        {
+            var animals = database.Animals.Where(x => x.Gender == "male");
+
+            foreach (var x in animals)
+            {
+                Console.WriteLine("Id: " + x.Id.ToString());
+                Console.WriteLine("Gender: " + x.Gender);
+                Console.WriteLine("Name: " + x.Name);
+                Console.WriteLine("Breed: " + x.Breed);
+                Console.WriteLine("Age: " + x.Age);
+                Console.WriteLine("Adoption status: " + x.Adoption_Status);
+                Console.WriteLine("Up to date on shots: " + x.Shots);
+                Console.WriteLine("Weekly diet: " + x.Food);
+                Console.WriteLine(" ");
+            }
+        }
+        public void SearchByFemaleGender()
+        {
+            var animals = database.Animals.Where(x => x.Gender == "female");
+
+            foreach (var x in animals)
+            {
+                Console.WriteLine("Id: " + x.Id.ToString());
+                Console.WriteLine("Gender: " + x.Gender);
+                Console.WriteLine("Name: " + x.Name);
+                Console.WriteLine("Breed: " + x.Breed);
+                Console.WriteLine("Age: " + x.Age);
+                Console.WriteLine("Adoption status: " + x.Adoption_Status);
+                Console.WriteLine("Up to date on shots: " + x.Shots);
+                Console.WriteLine("Weekly diet: " + x.Food);
+                Console.WriteLine(" ");
+            }
+        }
     }
 }

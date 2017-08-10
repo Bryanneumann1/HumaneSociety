@@ -22,6 +22,8 @@ namespace HumaneSociety
             Console.WriteLine("Enter 7 to search for all animals that are available for adoption");
             Console.WriteLine("Enter 8 to search for all animals that are up to date on shots");
             Console.WriteLine("Enter 9 to search for all animals that are not up to date on shots");
+            Console.WriteLine("Enter 10 to search for all male animals");
+            Console.WriteLine("Enter 11 to search for all female animals");
             Console.WriteLine("Enter EXIT to leave this application");
             string choice = Console.ReadLine().ToLower();
 
@@ -53,6 +55,12 @@ namespace HumaneSociety
                     break;
                 case "9":
                     animal.SearchAnimalsWithOutShots();
+                    break;
+                case "10":
+                    animal.SearchByMaleGender();
+                    break;
+                case "11":
+                    animal.SearchByFemaleGender();
                     break;
                 case "exit":
                     Environment.Exit(0);
