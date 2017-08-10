@@ -26,6 +26,21 @@ namespace HumaneSociety
             Console.WriteLine("Phone Number: ");
             customer.Phone_Number = Console.ReadLine().ToString();
 
+            Console.WriteLine("Activity level (Low),(Medium), or (High): ");
+            customer.Activity_Level = Console.ReadLine().ToString();
+
+            Console.WriteLine("House , Condo, or Appartment: ");
+            customer.Housing = Console.ReadLine().ToString();
+
+            Console.WriteLine("Own or Rent: ");
+            customer.Own_Rent = Console.ReadLine().ToString();
+
+            Console.WriteLine("Occupation: ");
+            customer.Occupation = Console.ReadLine().ToString();
+
+            Console.WriteLine("Annual Salary: ");
+            customer.Annual_Income = Console.ReadLine().ToString();
+
             database.Customers.InsertOnSubmit(customer);
             database.SubmitChanges();
         }

@@ -59,14 +59,23 @@ namespace HumaneSociety
             Console.WriteLine("Up to date on shots?: ");
             newAnimal.Shots = Console.ReadLine();
 
+            Console.WriteLine("Activity level (Low),(Medium), or (High)");
+            newAnimal.Activity_Level = Console.ReadLine();
+
             Console.WriteLine("Room #: ");
             newroomnumber.RoomNumber = Convert.ToInt32(Console.ReadLine());
+            newAnimal.Room_Number = newroomnumber;
 
             Console.WriteLine("Adoption status: ");
             newAnimal.Adoption_Status = Console.ReadLine();
 
             database.Animals.InsertOnSubmit(newAnimal);
+         
             database.SubmitChanges();
+        }
+        public void SubmitInfo()
+        {
+
         }
         public void UpdateAdoptionStatus()
         {
@@ -241,6 +250,16 @@ namespace HumaneSociety
                 Console.WriteLine("Up to date on shots: " + x.Shots);
                 Console.WriteLine("Weekly diet: " + x.Food);
                 Console.WriteLine(" ");
+            }
+        }
+        public void SearchForOccupiedRooms()
+        {
+            var rooms = database.Room_Numbers.Where(x => x.RoomNumber == x.RoomNumber);
+
+
+            foreach (var x in rooms)
+            {
+                Console.WriteLine(x.RoomNumber);
             }
         }
     }
