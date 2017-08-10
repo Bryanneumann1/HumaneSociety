@@ -67,7 +67,6 @@ namespace HumaneSociety
 
             database.Animals.InsertOnSubmit(newAnimal);
             database.SubmitChanges();
-
         }
         public void UpdateAdoptionStatus()
         {
@@ -138,5 +137,34 @@ namespace HumaneSociety
                 }
             }
         }
+        public void SearchAnimalsWithOutShots()
+        {
+            var animals = database.Animals.Where(x => x.Shots == "no");
+
+            foreach(var x in animals)
+                Console.WriteLine(x.Id.ToString(), x.Name);
+        }
+        public void SearchAnimalsWithShots()
+        {
+            var animals = database.Animals.Where(x => x.Shots == "yes");
+
+            foreach(var x in animals)
+                Console.WriteLine(x.Id.ToString(), x.Name);
+        }
+        public void SearchAnimalsAdopted()
+        {
+            var animals = database.Animals.Where(x => x.Adoption_Status == "adopted");
+
+            foreach (var x in animals)
+                Console.WriteLine(x.Id.ToString(), x.Name);
+        }
+        public void SearchAnimalsAvailble()
+        {
+            var animals = database.Animals.Where(x => x.Adoption_Status == "available");
+
+            foreach (var x in animals)
+                Console.WriteLine(x.Id.ToString(), x.Name);
+        }
+        
     }
 }

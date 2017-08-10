@@ -18,6 +18,10 @@ namespace HumaneSociety
             Console.WriteLine("Enter 3 to Update an animals Adoption Status");
             Console.WriteLine("Enter 4 to Update an animals Shots");
             Console.WriteLine("Enter 5 to Update an animals weekly Food consumtion");
+            Console.WriteLine("Enter 6 to search for all animals that have been adoption");
+            Console.WriteLine("Enter 7 to search for all animals that are available for adoption");
+            Console.WriteLine("Enter 8 to search for all animals that are up to date on shots");
+            Console.WriteLine("Enter 9 to search for all animals that are not up to date on shots");
             Console.WriteLine("Enter EXIT to leave this application");
             string choice = Console.ReadLine().ToLower();
 
@@ -37,6 +41,18 @@ namespace HumaneSociety
                     break;
                 case "5":
                     animal.UpdateFoodStatus();
+                    break;
+                case "6":
+                    animal.SearchAnimalsAdopted();
+                    break;
+                case "7":
+                    animal.SearchAnimalsAvailble();
+                    break;
+                case "8":
+                    animal.SearchAnimalsWithShots();
+                    break;
+                case "9":
+                    animal.SearchAnimalsWithOutShots();
                     break;
                 case "exit":
                     Environment.Exit(0);
