@@ -6,69 +6,83 @@ using System.Threading.Tasks;
 
 namespace HumaneSociety
 {
-   partial class Animal
+    partial class Animal
     {
+
         AnimalDatabaseDataContext database = new AnimalDatabaseDataContext();
         Animal newAnimal = new Animal();
         Room_Number newroomnumber = new Room_Number();
-        public void Run()
-        {
-
-            AddAnimal();
-
-            //var animals =
-            //    from x in database.Animals
-            //    select x;
-            //foreach (var x in animals)
-            //{
-            //    Console.WriteLine("Breed: " + x.Breed);
-            //    Console.WriteLine("Name: " + x.Name);
-            //    Console.WriteLine("ID#: " + x.Id);
-            //    Console.WriteLine("Species: " + x.Animal_Type);
-            //    Console.WriteLine("Room #: " + x.Room);
-            //    Console.WriteLine("Age: " + x.Age);
-            //    Console.WriteLine("Shots: " + x.Shots);
-            //    Console.WriteLine("Food: " + x.Food);
-            //    Console.WriteLine("Status: " + x.Adoption_Status);
-            //}
-
-        }
         public void AddAnimal()
         {
 
-            //Animal newAnimal = new Animal();
-            //Room_Number newroomnumber = new Room_Number();
+            SetAnimalType();
+            SetBreed();
+            SetGender();
+            SetName();
+            SetAge();
+            SetFoodConsumption();
+            SetShotStatus();
+            SetActivityLevel();
+            SetRoomNumber();
+            SetAdoptionStatus();
+            SetAdoptionFee();
+            SubmitChanges();
+
+        }
+        public void SetAnimalType()
+        {
             Console.WriteLine("You will need to enter infomation about the animal you are submiting");
             Console.WriteLine("Animal Type: ");
             newAnimal.Animal_Type = Console.ReadLine();
-
+        }
+        public void SetBreed()
+        {
             Console.WriteLine("Breed: ");
             newAnimal.Breed = Console.ReadLine();
-
+        }
+        public void SetGender()
+        {
             Console.WriteLine("Gender: ");
             newAnimal.Gender = Console.ReadLine();
-
+        }
+        public void SetName()
+        {
             Console.WriteLine("Name: ");
             newAnimal.Name = Console.ReadLine();
-
+        }
+        public void SetAge()
+        {
             Console.WriteLine("Age: ");
             newAnimal.Age = Console.ReadLine();
-
+        }
+        public void SetFoodConsumption()
+        {
             Console.WriteLine("Weekly Food Consumtion: ");
             newAnimal.Food = Console.ReadLine();
-
+        }
+        public void SetShotStatus()
+        {
             Console.WriteLine("Up to date on shots?: ");
             newAnimal.Shots = Console.ReadLine();
-
+        }
+        public void SetActivityLevel()
+        {
             Console.WriteLine("Activity level (Low),(Medium), or (High)");
             newAnimal.Activity_Level = Console.ReadLine();
-
+        }
+        public void SetRoomNumber()
+        {
             Console.WriteLine("Room #: ");
             newroomnumber.RoomNumber = Convert.ToInt32(Console.ReadLine());
             newAnimal.Room_Number = newroomnumber;
-
+        }
+        public void SetAdoptionStatus()
+        {
             Console.WriteLine("Adoption status: ");
             newAnimal.Adoption_Status = Console.ReadLine();
+        }
+        public void SetAdoptionFee()
+        {
 
             Console.WriteLine("What is the adoption fee for this animal?");
             try
@@ -79,10 +93,15 @@ namespace HumaneSociety
             {
                 Console.WriteLine("please enter the price in decimal format");
             }
+        }
+
+        public void SubmitChanges()
+        {
             database.Animals.InsertOnSubmit(newAnimal);
-         
+
             database.SubmitChanges();
         }
+
 
         public void UpdateAdoptionStatus()
         {
@@ -169,7 +188,7 @@ namespace HumaneSociety
                 Console.WriteLine("Weekly diet: " + x.Food);
                 Console.WriteLine(" ");
             }
-                
+
         }
 
         public void SearchAnimalsByAdoptionStatus()
@@ -231,7 +250,7 @@ namespace HumaneSociety
 
             input = Console.ReadLine().ToLower();
             var animals = database.Animals.Where(x => x.Activity_Level == input);
-            if(input != "low" && input != "medium" && input != "high")
+            if (input != "low" && input != "medium" && input != "high")
             {
                 Console.WriteLine("There are no animals that meet that search criteria");
                 SearchByActivityLevel();
@@ -288,7 +307,7 @@ namespace HumaneSociety
                 Console.WriteLine("There are no animals that meet that criteria");
                 SearchByAnimalType();
             }
-            foreach(var x in animal)
+            foreach (var x in animal)
             {
                 Console.WriteLine("Id: " + x.Id.ToString());
                 Console.WriteLine("Gender: " + x.Gender);
