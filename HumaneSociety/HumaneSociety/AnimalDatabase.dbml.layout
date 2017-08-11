@@ -1,37 +1,37 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 9.75" name="AnimalDatabase">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="AnimalDatabase">
   <DataContextMoniker Name="/AnimalDatabaseDataContext" />
   <nestedChildShapes>
-    <classShape Id="359de34c-6177-4329-9bda-fae2ef3e7e34" absoluteBounds="6.125, 7.375, 2, 1.1939925130208333">
-      <DataClassMoniker Name="/AnimalDatabaseDataContext/Room_Number" />
-      <nestedChildShapes>
-        <elementListCompartment Id="2a26894e-db18-4a08-983e-32a2d79e8a4b" absoluteBounds="6.14, 7.835, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="7a314292-0280-4bff-9e56-8ff08d1238a7" absoluteBounds="0.875, 6.625, 2, 2.7324039713541666">
-      <DataClassMoniker Name="/AnimalDatabaseDataContext/Customer" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c91b67da-49b7-48aa-b524-7dd615205205" absoluteBounds="0.89000000000000012, 7.085, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
-    <classShape Id="40121764-9717-47db-b2f8-0949f23fedfa" absoluteBounds="3.5, 6.375, 2, 3.1170068359375">
+    <classShape Id="8b0bafef-5065-443f-8819-484acc04111c" absoluteBounds="3.125, 1.875, 2, 3.3093082682291666">
       <DataClassMoniker Name="/AnimalDatabaseDataContext/Animal" />
       <nestedChildShapes>
-        <elementListCompartment Id="02ec8bb0-b045-432d-b1df-19374ef713ab" absoluteBounds="3.5149999999999997, 6.835, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="ee0c1102-cde7-4c55-9530-7cb878d52097" absoluteBounds="3.14, 2.335, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.875 : 7.99120198567708); (3.5 : 7.99120198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="c74275ec-a2da-4c85-8bab-31586d5728fd" absoluteBounds="0.5, 2, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/AnimalDatabaseDataContext/Customer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="30cf2c9a-03cd-4435-a62c-d32d32b85dcf" absoluteBounds="0.515, 2.46, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 3.36620198567708); (3.125 : 3.36620198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/AnimalDatabaseDataContext/Customer/Customer_Animal" />
       <nodes>
-        <classShapeMoniker Id="7a314292-0280-4bff-9e56-8ff08d1238a7" />
-        <classShapeMoniker Id="40121764-9717-47db-b2f8-0949f23fedfa" />
+        <classShapeMoniker Id="c74275ec-a2da-4c85-8bab-31586d5728fd" />
+        <classShapeMoniker Id="8b0bafef-5065-443f-8819-484acc04111c" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(6.125 : 7.97199625651042); (5.5 : 7.97199625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <classShape Id="78a14c92-066a-4395-864a-9ab8c5f09483" absoluteBounds="6.25, 2.5, 2, 1.1939925130208333">
+      <DataClassMoniker Name="/AnimalDatabaseDataContext/Room_Number" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7ae08eb7-8f67-4215-a77c-d885d3c3c573" absoluteBounds="6.265, 2.96, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(6.25 : 3.09699625651042); (5.125 : 3.09699625651042)]" fixedFrom="Algorithm" fixedTo="Algorithm">
       <AssociationMoniker Name="/AnimalDatabaseDataContext/Room_Number/Room_Number_Animal" />
       <nodes>
-        <classShapeMoniker Id="359de34c-6177-4329-9bda-fae2ef3e7e34" />
-        <classShapeMoniker Id="40121764-9717-47db-b2f8-0949f23fedfa" />
+        <classShapeMoniker Id="78a14c92-066a-4395-864a-9ab8c5f09483" />
+        <classShapeMoniker Id="8b0bafef-5065-443f-8819-484acc04111c" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace HumaneSociety
 {
-    partial class Animal
+   partial class Animal
     {
         AnimalDatabaseDataContext database = new AnimalDatabaseDataContext();
-
+        Animal newAnimal = new Animal();
+        Room_Number newroomnumber = new Room_Number();
         public void Run()
         {
 
@@ -35,8 +36,8 @@ namespace HumaneSociety
         public void AddAnimal()
         {
 
-            Animal newAnimal = new Animal();
-            Room_Number newroomnumber = new Room_Number();
+            //Animal newAnimal = new Animal();
+            //Room_Number newroomnumber = new Room_Number();
             Console.WriteLine("You will need to enter infomation about the animal you are submiting");
             Console.WriteLine("Animal Type: ");
             newAnimal.Animal_Type = Console.ReadLine();
@@ -69,14 +70,20 @@ namespace HumaneSociety
             Console.WriteLine("Adoption status: ");
             newAnimal.Adoption_Status = Console.ReadLine();
 
+            Console.WriteLine("What is the adoption fee for this animal?");
+            try
+            {
+                newAnimal.Price = Convert.ToDecimal(Console.ReadLine());
+            }
+            catch
+            {
+                Console.WriteLine("please enter the price in decimal format");
+            }
             database.Animals.InsertOnSubmit(newAnimal);
          
             database.SubmitChanges();
         }
-        public void SubmitInfo()
-        {
 
-        }
         public void UpdateAdoptionStatus()
         {
             string nameinput;
@@ -164,64 +171,19 @@ namespace HumaneSociety
             }
                 
         }
-        public void SearchAnimalsWithShots()
-        {
-            var animals = database.Animals.Where(x => x.Shots == "yes");
 
-            foreach (var x in animals)
+        public void SearchAnimalsByAdoptionStatus()
+        {
+            string input;
+            Console.WriteLine("Please enter (Adopted) to search for all adopted animals\n" +
+                "Please enter (Available) to search all available animals.");
+            input = Console.ReadLine().ToLower();
+            var animals = database.Animals.Where(x => x.Adoption_Status == input);
+            if (input != "adopted" && input != "available")
             {
-                Console.WriteLine("Id: " + x.Id.ToString());
-                Console.WriteLine("Gender: " + x.Gender);
-                Console.WriteLine("Name: " + x.Name);
-                Console.WriteLine("Breed: " + x.Breed);
-                Console.WriteLine("Age: " + x.Age);
-                Console.WriteLine("Adoption status: " + x.Adoption_Status);
-                Console.WriteLine("Up to date on shots: " + x.Shots);
-                Console.WriteLine("Weekly diet: " + x.Food);
-                Console.WriteLine(" ");
+                Console.WriteLine("There are no animals that meet that criteria");
+                SearchAnimalsByAdoptionStatus();
             }
-                
-        }
-        public void SearchAnimalsAdopted()
-        {
-            var animals = database.Animals.Where(x => x.Adoption_Status == "adopted");
-
-            foreach (var x in animals)
-            {
-                Console.WriteLine("Id: " + x.Id.ToString());
-                Console.WriteLine("Gender: " + x.Gender);
-                Console.WriteLine("Name: " + x.Name);
-                Console.WriteLine("Breed: " + x.Breed);
-                Console.WriteLine("Age: " + x.Age);
-                Console.WriteLine("Adoption status: " + x.Adoption_Status);
-                Console.WriteLine("Up to date on shots: " + x.Shots);
-                Console.WriteLine("Weekly diet: " + x.Food);
-                Console.WriteLine(" ");
-            }
-                
-        }
-        public void SearchAnimalsAvailble()
-        {
-            var animals = database.Animals.Where(x => x.Adoption_Status == "available");
-
-            foreach (var x in animals)
-            {
-                Console.WriteLine("Id: " + x.Id.ToString());
-                Console.WriteLine("Gender: " + x.Gender);
-                Console.WriteLine("Name: " + x.Name);
-                Console.WriteLine("Breed: " + x.Breed);
-                Console.WriteLine("Age: " + x.Age);
-                Console.WriteLine("Adoption status: " + x.Adoption_Status);
-                Console.WriteLine("Up to date on shots: " + x.Shots);
-                Console.WriteLine("Weekly diet: " + x.Food);
-                Console.WriteLine(" ");
-            }
-               
-        }
-        public void SearchByMaleGender()
-        {
-            var animals = database.Animals.Where(x => x.Gender == "male");
-
             foreach (var x in animals)
             {
                 Console.WriteLine("Id: " + x.Id.ToString());
@@ -235,10 +197,19 @@ namespace HumaneSociety
                 Console.WriteLine(" ");
             }
         }
-        public void SearchByFemaleGender()
-        {
-            var animals = database.Animals.Where(x => x.Gender == "female");
 
+        public void SearchAnimalsByGender()
+        {
+            string input;
+            Console.WriteLine("Enter (male) to search for all male animals\n" +
+                "Enter (female) to search for all female animals");
+            input = Console.ReadLine().ToLower();
+            var animals = database.Animals.Where(x => x.Gender == input);
+            if (input != "male" && input != "female")
+            {
+                Console.WriteLine("There are no animals that meet that search criteria");
+                SearchAnimalsByGender();
+            }
             foreach (var x in animals)
             {
                 Console.WriteLine("Id: " + x.Id.ToString());
@@ -252,6 +223,49 @@ namespace HumaneSociety
                 Console.WriteLine(" ");
             }
         }
+
+        public void SearchByActivityLevel()
+        {
+            string input;
+            Console.WriteLine("Please enter the activity level of the animal you would like to search (Low), (Medium), or (High)");
+
+            input = Console.ReadLine().ToLower();
+            var animals = database.Animals.Where(x => x.Activity_Level == input);
+            if(input != "low" && input != "medium" && input != "high")
+            {
+                Console.WriteLine("There are no animals that meet that search criteria");
+                SearchByActivityLevel();
+            }
+            foreach (var x in animals)
+            {
+                Console.WriteLine("Id: " + x.Id.ToString());
+                Console.WriteLine("Gender: " + x.Gender);
+                Console.WriteLine("Name: " + x.Name);
+                Console.WriteLine("Breed: " + x.Breed);
+                Console.WriteLine("Age: " + x.Age);
+                Console.WriteLine("Adoption status: " + x.Adoption_Status);
+                Console.WriteLine("Up to date on shots: " + x.Shots);
+                Console.WriteLine("Weekly diet: " + x.Food);
+                Console.WriteLine(" ");
+            }
+
+        }
+        //public void SearchForMultipleCriteria()
+        //{
+        //    string gender;
+        //    string breed;
+        //    string type;
+        //    string activityLevel;
+        //    Console.WriteLine("Please enter the type of animal you would like to search for");
+        //    type = Console.ReadLine().ToLower();
+        //    Console.WriteLine("Please enter the breed of animal you would like to serch for");
+        //    breed = Console.ReadLine().ToLower();
+        //    Console.WriteLine("Enter (male) to search for all male animals\n" +
+        //        "Enter (female) to search for all female animals");
+        //    gender = Console.ReadLine().ToLower();
+        //    Console.WriteLine("Please enter the activity level of the animal you would like to search (Low), (Medium), or (High)");
+        //    activityLevel = Console.ReadLine().ToLower();
+        //}
         public void SearchForOccupiedRooms()
         {
             var rooms = database.Room_Numbers.Where(x => x.RoomNumber == x.RoomNumber);
@@ -260,6 +274,31 @@ namespace HumaneSociety
             foreach (var x in rooms)
             {
                 Console.WriteLine(x.RoomNumber);
+            }
+        }
+        public void SearchByAnimalType()
+        {
+            string input;
+            Console.WriteLine("Please enter the Type of animal you would like to search for");
+            input = Console.ReadLine().ToLower();
+
+            var animal = database.Animals.Where(x => x.Animal_Type == input);
+            if (input != "dog" && input != "cat" && input != "bird" && input != "rabbit" && input != "guinea pig")
+            {
+                Console.WriteLine("There are no animals that meet that criteria");
+                SearchByAnimalType();
+            }
+            foreach(var x in animal)
+            {
+                Console.WriteLine("Id: " + x.Id.ToString());
+                Console.WriteLine("Gender: " + x.Gender);
+                Console.WriteLine("Name: " + x.Name);
+                Console.WriteLine("Breed: " + x.Breed);
+                Console.WriteLine("Age: " + x.Age);
+                Console.WriteLine("Adoption status: " + x.Adoption_Status);
+                Console.WriteLine("Up to date on shots: " + x.Shots);
+                Console.WriteLine("Weekly diet: " + x.Food);
+                Console.WriteLine(" ");
             }
         }
     }

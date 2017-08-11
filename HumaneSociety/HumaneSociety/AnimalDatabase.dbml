@@ -1,10 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="HumaneSociety" Class="AnimalDatabaseDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-IKL95E3;Initial Catalog=HumaneSociety;Integrated Security=True" SettingsObjectName="HumaneSociety.Properties.Settings" SettingsPropertyName="HumaneSocietyConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Room_Number" Member="Room_Numbers">
-    <Type Name="Room_Number">
+  <Table Name="dbo.Animals" Member="Animals">
+    <Type Name="Animal">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="RoomNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Room_Number_Animal" Member="Animals" ThisKey="Id" OtherKey="RoomId" Type="Animal" />
+      <Column Name="Animal_Type" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Gender" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Adoption_Status" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Age" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Shots" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Food" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Breed" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="RoomId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Activity_Level" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="Price" Type="System.Decimal" DbType="Decimal(6,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Customer_Animal" Member="Customer" ThisKey="CustomerID" OtherKey="Id" Type="Customer" IsForeignKey="true" />
+      <Association Name="Room_Number_Animal" Member="Room_Number" ThisKey="RoomId" OtherKey="Id" Type="Room_Number" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Customer" Member="Customers">
@@ -22,22 +34,11 @@
       <Association Name="Customer_Animal" Member="Animals" ThisKey="Id" OtherKey="CustomerID" Type="Animal" />
     </Type>
   </Table>
-  <Table Name="dbo.Animals" Member="Animals">
-    <Type Name="Animal">
+  <Table Name="dbo.Room_Number" Member="Room_Numbers">
+    <Type Name="Room_Number">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Animal_Type" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Gender" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Adoption_Status" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Age" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Shots" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
-      <Column Name="Food" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Breed" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="RoomId" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Activity_Level" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Association Name="Customer_Animal" Member="Customer" ThisKey="CustomerID" OtherKey="Id" Type="Customer" IsForeignKey="true" />
-      <Association Name="Room_Number_Animal" Member="Room_Number" ThisKey="RoomId" OtherKey="Id" Type="Room_Number" IsForeignKey="true" />
+      <Column Name="RoomNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Room_Number_Animal" Member="Animals" ThisKey="Id" OtherKey="RoomId" Type="Animal" />
     </Type>
   </Table>
 </Database>
