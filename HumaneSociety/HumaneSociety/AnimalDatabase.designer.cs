@@ -120,13 +120,13 @@ namespace HumaneSociety
 		
 		private string _Breed;
 		
-		private int _RoomId;
+		private System.Nullable<int> _RoomId;
 		
-		private int _CustomerID;
+		private System.Nullable<int> _CustomerID;
 		
 		private string _Activity_Level;
 		
-		private decimal _Price;
+		private string _Price;
 		
 		private EntityRef<Customer> _Customer;
 		
@@ -154,13 +154,13 @@ namespace HumaneSociety
     partial void OnFoodChanged();
     partial void OnBreedChanging(string value);
     partial void OnBreedChanged();
-    partial void OnRoomIdChanging(int value);
+    partial void OnRoomIdChanging(System.Nullable<int> value);
     partial void OnRoomIdChanged();
-    partial void OnCustomerIDChanging(int value);
+    partial void OnCustomerIDChanging(System.Nullable<int> value);
     partial void OnCustomerIDChanged();
     partial void OnActivity_LevelChanging(string value);
     partial void OnActivity_LevelChanged();
-    partial void OnPriceChanging(decimal value);
+    partial void OnPriceChanging(string value);
     partial void OnPriceChanged();
     #endregion
 		
@@ -351,8 +351,8 @@ namespace HumaneSociety
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomId", DbType="Int NOT NULL")]
-		public int RoomId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoomId", DbType="Int")]
+		public System.Nullable<int> RoomId
 		{
 			get
 			{
@@ -375,8 +375,8 @@ namespace HumaneSociety
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="Int NOT NULL")]
-		public int CustomerID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="Int")]
+		public System.Nullable<int> CustomerID
 		{
 			get
 			{
@@ -419,8 +419,8 @@ namespace HumaneSociety
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="Decimal(6,2) NOT NULL")]
-		public decimal Price
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Price", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string Price
 		{
 			get
 			{
@@ -466,7 +466,7 @@ namespace HumaneSociety
 					}
 					else
 					{
-						this._CustomerID = default(int);
+						this._CustomerID = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Customer");
 				}
@@ -500,7 +500,7 @@ namespace HumaneSociety
 					}
 					else
 					{
-						this._RoomId = default(int);
+						this._RoomId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Room_Number");
 				}

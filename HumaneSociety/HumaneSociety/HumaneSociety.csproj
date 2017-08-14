@@ -59,7 +59,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Animal.cs" />
+    <Compile Include="HumaneSociety.cs" />
     <Compile Include="UI.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -8,42 +8,163 @@ namespace HumaneSociety
 {
     public partial class Customer
     {
-        AnimalDatabaseDataContext database = new AnimalDatabaseDataContext();
 
+        AnimalDatabaseDataContext database = new AnimalDatabaseDataContext();
+        
         public void AddCustomer()
         {
             Customer customer = new Customer();
+            AddCustomerFirstName(customer);
+            AddCustomerLastName(customer);
+            AddCustomerAddress(customer);
+            AddCustomerPhoneNumber(customer);
+            AddCustomerActivityLevel(customer);
+            AddCustomerHousing(customer);
+            AddCustomerOwnOrRent(customer);
+            AddCustomerOccupation(customer);
+            AddCustomerSalary(customer);
+            SubmitData(customer);
+        }
+        public void AddCustomerFirstName(Customer customer)
+        {
+            string firstName;
             Console.WriteLine("You will need to enter information about the customer adopting a pet.");
             Console.WriteLine("First Name: ");
-            customer.First_Name = Console.ReadLine().ToString();
-
+            firstName = Console.ReadLine().ToLower();
+            if (firstName == "")
+            {
+                AddCustomerFirstName(customer);
+            }
+            else
+            {
+                customer.First_Name = firstName.ToString();
+            }  
+        }
+        public void AddCustomerLastName(Customer customer)
+        {
+            string lastName;
             Console.WriteLine("Last Name: ");
-            customer.Last_Name = Console.ReadLine().ToString();
-
+            lastName = Console.ReadLine().ToLower();
+            if (lastName == "")
+            {
+                AddCustomerLastName(customer);
+            }
+            else
+            {
+                customer.Last_Name = lastName.ToString();
+            }
+        }
+        public void AddCustomerAddress(Customer customer)
+        {
+            string address;
             Console.WriteLine("Address: ");
-            customer.Address_ = Console.ReadLine().ToString();
-
+            address = Console.ReadLine().ToLower();
+            if(address == "")
+            {
+                AddCustomerAddress(customer);
+            }
+            else
+            {
+                customer.Address_ = address.ToString();
+            }
+        }
+        public void AddCustomerPhoneNumber(Customer customer)
+        {
+            string phoneNumber;
             Console.WriteLine("Phone Number: ");
-            customer.Phone_Number = Console.ReadLine().ToString();
-
+            phoneNumber = Console.ReadLine().ToLower();
+            if(phoneNumber == "")
+            {
+                AddCustomerPhoneNumber(customer);
+            }
+            else
+            {
+                customer.Phone_Number = phoneNumber.ToString();
+            }
+            
+        }
+        public void AddCustomerActivityLevel(Customer customer)
+        {
+            string activity;
             Console.WriteLine("Activity level (Low),(Medium), or (High): ");
-            customer.Activity_Level = Console.ReadLine().ToString();
-
-            Console.WriteLine("House , Condo, or Appartment: ");
-            customer.Housing = Console.ReadLine().ToString();
-
+            activity = Console.ReadLine().ToLower();
+            if (activity != "low" && activity != "medium" && activity != "high")
+            {
+                AddCustomerActivityLevel(customer);
+            }
+            else
+            {
+                customer.Activity_Level = activity.ToString();
+            }
+            
+        }
+        public void AddCustomerHousing(Customer customer)
+        {
+            string housing;
+            Console.WriteLine("Do you live in a House , Condo, or Appartment: ");
+            housing = Console.ReadLine().ToLower();
+            if(housing != "house" && housing != "condo" && housing != "appartment")
+            {
+                AddCustomerHousing(customer);
+            }
+            else
+            {
+                customer.Housing = housing.ToString();
+            }
+        }
+        public void AddCustomerOwnOrRent(Customer customer)
+        {
+            string ownRent;
             Console.WriteLine("Own or Rent: ");
-            customer.Own_Rent = Console.ReadLine().ToString();
-
+            ownRent = Console.ReadLine().ToLower();
+            if (ownRent != "own" && ownRent != "rent")
+            {
+                AddCustomerOwnOrRent(customer);
+            }
+            else
+            {
+                customer.Own_Rent = ownRent.ToString();
+            }
+            
+        }
+        public void AddCustomerOccupation(Customer customer)
+        {
+            string occupation;
             Console.WriteLine("Occupation: ");
-            customer.Occupation = Console.ReadLine().ToString();
-
+            occupation = Console.ReadLine().ToString();
+            if (occupation == "")
+            {
+                AddCustomerOccupation(customer);
+            }
+            else
+            {
+                customer.Occupation = occupation.ToString();
+            }
+            
+        }
+        public void AddCustomerSalary(Customer customer)
+        {
+            string salary;
             Console.WriteLine("Annual Salary: ");
-            customer.Annual_Income = Console.ReadLine().ToString();
-
+            salary = Console.ReadLine().ToLower();
+            if(salary == "")
+            {
+                AddCustomerSalary(customer);
+            }
+            else
+            {
+                customer.Annual_Income = salary.ToString();
+            }
+        }
+        public void SubmitData(Customer customer)
+        {
             database.Customers.InsertOnSubmit(customer);
             database.SubmitChanges();
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Thank you for creating a profile, It has been submited into the system");
+            Console.ResetColor();
+            Console.WriteLine("Please press enter to return to the main menu");
         }
-
     }
 }

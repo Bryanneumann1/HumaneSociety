@@ -8,23 +8,64 @@ namespace HumaneSociety
 {
     class UI
     {
-       
+        Customer customer = new Customer();
+        Animal animal = new Animal();
         public void Run()
         {
-            Customer customer = new Customer();
-            Animal animal = new Animal();
-            Console.WriteLine("Here you will be able to enter new animals and customers.");
+            
+            string choice;
+            Console.WriteLine("Enter 1 if you want to log in as a Humane Society Employee.");
+            Console.WriteLine("Enter 2 if you are a customer creating a Profile");
+            choice = Console.ReadLine().ToLower();
+
+            switch (choice)
+            {
+                case "1":
+                    EmployeeLogIn();
+                    break;
+                case "2":
+                    customer.AddCustomer();
+                    break;
+            }
+
+        }
+        public void EmployeeLogIn()
+        {
+            //password is humanesociety
+            string password;
+            Console.WriteLine("Please Enter the Humane Society login password");
+            password = Console.ReadLine().ToString();
+            {
+                if (password == "humanesociety")
+                {
+                    Console.Clear();
+                    GetEmployeeOptions();
+                }
+               else
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("The Password you entered is incorrect\n");
+                    Console.ResetColor();
+                    Run();
+                }
+            }
+
+
+        }
+        public void GetEmployeeOptions()
+        {
+           
+            Console.WriteLine("Here you will be able to enter new animals into the database.");
             Console.WriteLine("Enter 1 to Add a new animal to the database");
-            Console.WriteLine("Enter 2 to Add a new customer to the database");
-            Console.WriteLine("Enter 3 to Update an animals Adoption Status");
-            Console.WriteLine("Enter 4 to Update an animals Shots");
-            Console.WriteLine("Enter 5 to Update an animals weekly Food consumtion");
-            Console.WriteLine("Enter 6 to search for all animals that have been adoption");
-            Console.WriteLine("Enter 7 to search for all animals that are available for adoption");
-            Console.WriteLine("Enter 8 to search for all animals that are up to date on shots");
-            Console.WriteLine("Enter 10 to search animals by Gender");
-            Console.WriteLine("Enter 12 to search for occupied rooms");
-            Console.WriteLine("Enter 13 to search by Activity requirements");
+            Console.WriteLine("Enter 2 to Update an animals Adoption Status");
+            Console.WriteLine("Enter 3 to Update an animals Shots");
+            Console.WriteLine("Enter 4 to Update an animals weekly Food consumtion");
+            Console.WriteLine("Enter 5 to search by adoption status");
+            Console.WriteLine("Enter 6 to search for all animals that need their shots updated");
+            Console.WriteLine("Enter 7 to search animals by Gender");
+            Console.WriteLine("Enter 8 to search by Activity requirements");
+            Console.WriteLine("Enter 9 to search for occupied rooms");
             Console.WriteLine("Enter EXIT to leave this application");
             
             string choice = Console.ReadLine().ToLower();
@@ -32,34 +73,40 @@ namespace HumaneSociety
             switch (choice)
             {
                 case "1":
-                    animal.AddAnimal();
+                    Console.Clear();
+                    animal.AdoptionRules();
                     break;
                 case "2":
-                    customer.AddCustomer();
-                    break;
-                case "3":
+                    Console.Clear();
                     animal.UpdateAdoptionStatus();
                     break;
-                case "4":
+                case "3":
+                    Console.Clear();
                     animal.UpdateShotStatus();
                     break;
-                case "5":
+                case "4":
+                    Console.Clear();
                     animal.UpdateFoodStatus();
                     break;
-                case "6":
+                case "5":
+                    Console.Clear();
                     animal.SearchAnimalsByAdoptionStatus();
                     break;
-                case "8":
+                case "6":
+                    Console.Clear();
                     animal.SearchAnimalsWithOutShots();
                     break;
-                case "10":
+                case "7":
+                    Console.Clear();
                     animal.SearchAnimalsByGender();
                     break;
-                case "12":
-                    animal.SearchForOccupiedRooms();
-                    break;
-                case "13":
+                case "8":
+                    Console.Clear();
                     animal.SearchByActivityLevel();
+                    break;
+                case "9":
+                    Console.Clear();
+                    animal.SearchForOccupiedRooms();
                     break;
                 case "exit":
                     Environment.Exit(0);

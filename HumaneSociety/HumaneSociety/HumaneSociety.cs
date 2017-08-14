@@ -8,101 +8,209 @@ namespace HumaneSociety
 {
     partial class Animal
     {
-
+        
         AnimalDatabaseDataContext database = new AnimalDatabaseDataContext();
-        Animal newAnimal = new Animal();
+        
         Room_Number newroomnumber = new Room_Number();
         public void AddAnimal()
         {
+            UI ui = new UI();
+           Animal newAnimal = new Animal();
+            SetAnimalType(newAnimal);
+            SetBreed(newAnimal);
+            SetGender(newAnimal);
+            SetName(newAnimal);
+            SetAge(newAnimal);
+            SetFoodConsumption(newAnimal);
+            SetShotStatus(newAnimal);
+            SetActivityLevel(newAnimal);
+            SetRoomNumber(newAnimal);
+            SetAdoptionStatus(newAnimal);
+            SetAdoptionFee(newAnimal);
+            SubmitChanges(newAnimal);
+            ui.GetEmployeeOptions();
+        }
+        public void AdoptionRules()
+        {
+            
+            Console.WriteLine("You will need to enter infomation about the animal you are submiting.\n");
+            Console.WriteLine("Please read each question carefully and answer accordingly.\n");
+            AddAnimal();
+        }   
+        public void SetAnimalType(Animal newAnimal)
+        {
+            string input;
+            Console.WriteLine("This Humane Society is equipt to hold Dogs, Cats, Birds, Rabbits, and Guinea pigs\n");
+            Console.WriteLine("Please enter the Animal Type: ");
+            input = Console.ReadLine().ToLower();
+            if (input != "dog" && input != "cat" && input != "bird" && input != "rabbit" && input != "guinea pig")
+            {
+            SetAnimalType(newAnimal);
+            }
+            else if(input == "back")
+            {
+                
+            }
+            else
+            {
+                newAnimal.Animal_Type = input.ToString();
+            }
+        }
+        public void SetBreed(Animal newAnimal)
+        {
+            Console.WriteLine("Please enter the Breed of the animal that is being submitted: ");
+            string breed;
+            breed = Console.ReadLine();
+            if (breed == "")
+            {
+                SetBreed(newAnimal);
+            }
+            else
+            {
+                newAnimal.Breed = breed.ToString();
+            }
+        }
+        public void SetGender(Animal newAnimal)
+        {
+            string gender;
+            Console.WriteLine("Please enter a Gender for the animal that is being submitted: ");
+            gender = Console.ReadLine();
+            if (gender == "")
+            {
+                SetGender(newAnimal);
+            }
+            else
+            {
+                newAnimal.Gender = gender.ToString();
+            }
+        }
+        public void SetName(Animal newAnimal)
+        {
+            string name;
+            Console.WriteLine("Please enter a Name for the animal that is being submitted");
+            name = Console.ReadLine();
+            if (name == "")
+            {
+                
+                SetName(newAnimal);
+            }
+            else
+            {
+                newAnimal.Name = name.ToString();
+            }
 
-            SetAnimalType();
-            SetBreed();
-            SetGender();
-            SetName();
-            SetAge();
-            SetFoodConsumption();
-            SetShotStatus();
-            SetActivityLevel();
-            SetRoomNumber();
-            SetAdoptionStatus();
-            SetAdoptionFee();
-            SubmitChanges();
-
         }
-        public void SetAnimalType()
+        public void SetAge(Animal newAnimal)
         {
-            Console.WriteLine("You will need to enter infomation about the animal you are submiting");
-            Console.WriteLine("Animal Type: ");
-            newAnimal.Animal_Type = Console.ReadLine();
-        }
-        public void SetBreed()
-        {
-            Console.WriteLine("Breed: ");
-            newAnimal.Breed = Console.ReadLine();
-        }
-        public void SetGender()
-        {
-            Console.WriteLine("Gender: ");
-            newAnimal.Gender = Console.ReadLine();
-        }
-        public void SetName()
-        {
-            Console.WriteLine("Name: ");
-            newAnimal.Name = Console.ReadLine();
-        }
-        public void SetAge()
-        {
+            string age;
+            Console.WriteLine("Please enter the animals Age in month format if under 2 years old");
             Console.WriteLine("Age: ");
-            newAnimal.Age = Console.ReadLine();
+            age = Console.ReadLine();
+            if (age == "")
+            {
+                SetAge(newAnimal);
+            }
+            else
+            {
+            newAnimal.Age = age.ToString();
+            }
         }
-        public void SetFoodConsumption()
+        public void SetFoodConsumption(Animal newAnimal)
         {
-            Console.WriteLine("Weekly Food Consumtion: ");
-            newAnimal.Food = Console.ReadLine();
+            string food;
+            Console.WriteLine("Please enter the animals Weekly Food Consumtion and Food type: ");
+            food = Console.ReadLine();
+            if (food == "")
+            {
+                SetFoodConsumption(newAnimal);
+            }
+            else
+            {
+                newAnimal.Food = food.ToString();
+            }
         }
-        public void SetShotStatus()
+        public void SetShotStatus(Animal newAnimal)
         {
-            Console.WriteLine("Up to date on shots?: ");
-            newAnimal.Shots = Console.ReadLine();
+            string shots;
+            Console.WriteLine("Please enter if the animal is Up to date on shots?\n(yes) or (no): ");
+            shots = Console.ReadLine();
+            if (shots == "")
+            {
+                SetShotStatus(newAnimal);
+            }
+            else
+            {
+                newAnimal.Shots = shots.ToString();
+            }
         }
-        public void SetActivityLevel()
+        public void SetActivityLevel(Animal newAnimal)
         {
-            Console.WriteLine("Activity level (Low),(Medium), or (High)");
-            newAnimal.Activity_Level = Console.ReadLine();
+            string activity;
+            Console.WriteLine("Please enter animals activity level (Low),(Medium), or (High)");
+            activity = Console.ReadLine().ToLower();
+            if (activity != "low" && activity != "medium" && activity != "high")
+            {
+                SetActivityLevel(newAnimal);
+            }
+            else
+            {
+                newAnimal.Activity_Level = activity.ToString();
+            }
         }
-        public void SetRoomNumber()
+        public void SetRoomNumber(Animal newAnimal)
         {
-            Console.WriteLine("Room #: ");
-            newroomnumber.RoomNumber = Convert.ToInt32(Console.ReadLine());
-            newAnimal.Room_Number = newroomnumber;
-        }
-        public void SetAdoptionStatus()
-        {
-            Console.WriteLine("Adoption status: ");
-            newAnimal.Adoption_Status = Console.ReadLine();
-        }
-        public void SetAdoptionFee()
-        {
-
-            Console.WriteLine("What is the adoption fee for this animal?");
+            Console.WriteLine("Please enter the Room number the animal will be housed in.\nRoom #: ");
             try
             {
-                newAnimal.Price = Convert.ToDecimal(Console.ReadLine());
+                newroomnumber.RoomNumber = Convert.ToInt32(Console.ReadLine());
+                newAnimal.Room_Number = newroomnumber;
             }
             catch
             {
-                Console.WriteLine("please enter the price in decimal format");
+                Console.WriteLine("Please enter a valid room number");
+                SetRoomNumber(newAnimal);
             }
         }
-
-        public void SubmitChanges()
+        public void SetAdoptionStatus(Animal newAnimal)
+        {
+            string status;
+            
+            Console.WriteLine("Please enter if the animal is (Adopted) or (Available)");
+            Console.WriteLine("Adoption status: ");
+            status = Console.ReadLine().ToLower();
+            if (status != "adopted" && status != "available")
+            {
+                SetAdoptionStatus(newAnimal);
+            }
+            else
+            {
+                newAnimal.Adoption_Status = status.ToString();
+            }
+        }
+        public void SetAdoptionFee(Animal newAnimal)
+        {
+            string price;
+            Console.WriteLine("Please enter the Adoption fee for this animal?");
+            price = Console.ReadLine();
+            if (price == "")
+            {
+                SetAdoptionFee(newAnimal);
+            }
+            else
+            {
+                newAnimal.Price = price.ToString();
+            }
+        }
+        public void SubmitChanges(Animal newAnimal)
         {
             database.Animals.InsertOnSubmit(newAnimal);
 
             database.SubmitChanges();
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("This Animal has been submitted into the Humane Society database");
+            Console.ResetColor();
         }
-
-
         public void UpdateAdoptionStatus()
         {
             string nameinput;
@@ -121,11 +229,24 @@ namespace HumaneSociety
                 else
                 {
                     x.Adoption_Status = "Adopted";
+                    x.Price = "PAID";
                     database.SubmitChanges();
 
                     Console.WriteLine("Updated");
+                    ResetRoomNumber();
                 }
             }
+        }
+        public void ResetRoomNumber()
+        {
+            var animals = database.Animals.Where(x => x.Adoption_Status == "adopted");
+
+            foreach(var x in animals)
+            {
+                x.RoomId = null;
+                database.SubmitChanges();
+            }
+            Console.WriteLine("This room is now clean and ready for a new animal");
         }
         public void UpdateShotStatus()
         {
@@ -190,7 +311,6 @@ namespace HumaneSociety
             }
 
         }
-
         public void SearchAnimalsByAdoptionStatus()
         {
             string input;
@@ -216,7 +336,6 @@ namespace HumaneSociety
                 Console.WriteLine(" ");
             }
         }
-
         public void SearchAnimalsByGender()
         {
             string input;
@@ -242,7 +361,6 @@ namespace HumaneSociety
                 Console.WriteLine(" ");
             }
         }
-
         public void SearchByActivityLevel()
         {
             string input;
@@ -267,33 +385,19 @@ namespace HumaneSociety
                 Console.WriteLine("Weekly diet: " + x.Food);
                 Console.WriteLine(" ");
             }
-
         }
-        //public void SearchForMultipleCriteria()
-        //{
-        //    string gender;
-        //    string breed;
-        //    string type;
-        //    string activityLevel;
-        //    Console.WriteLine("Please enter the type of animal you would like to search for");
-        //    type = Console.ReadLine().ToLower();
-        //    Console.WriteLine("Please enter the breed of animal you would like to serch for");
-        //    breed = Console.ReadLine().ToLower();
-        //    Console.WriteLine("Enter (male) to search for all male animals\n" +
-        //        "Enter (female) to search for all female animals");
-        //    gender = Console.ReadLine().ToLower();
-        //    Console.WriteLine("Please enter the activity level of the animal you would like to search (Low), (Medium), or (High)");
-        //    activityLevel = Console.ReadLine().ToLower();
-        //}
         public void SearchForOccupiedRooms()
         {
             var rooms = database.Room_Numbers.Where(x => x.RoomNumber == x.RoomNumber);
-
-
             foreach (var x in rooms)
-            {
-                Console.WriteLine(x.RoomNumber);
-            }
+                if (x.RoomNumber == x.RoomNumber)
+                {
+                    Console.WriteLine(x.RoomNumber);
+                }
+                else
+                {
+                    Console.WriteLine("All rooms are availalbe");
+                }
         }
         public void SearchByAnimalType()
         {
